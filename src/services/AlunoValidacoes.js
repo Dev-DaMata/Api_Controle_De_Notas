@@ -25,12 +25,21 @@ const Validacoes = {
             return aluno
         }
     },
+    _validaDelete:  async(id, callback)=>{
+        const aluno = alunoDAO.pegaUmAlunoId(id)
+        if(aluno === undefined){
+            throw new Error(`O aluno com o id: ${id}, não existe!`)
+        }else{
+            await callback(id)
+            return aluno
+        }
+    },
     _validaReqBody : async (body)=>{
         if(body.nome && body.sobrenome && body.serie){
             return body
         }else{
             throw new Error ("não foi possivel atualizar essa informação")
         }
-    },
+    }
 }
 export default Validacoes

@@ -65,6 +65,24 @@ const alunoDAO ={
             )
         })
     },
+
+    deletaAluno: (id)=>{
+        const DELETA_ALUNOS = `
+        DELETE FROM ALUNOS 
+        WHERE id = ?
+        `
+        return new Promise((resolve, reject)=>{
+            db.run(DELETA_ALUNOS,
+                id,(error, row)=>{
+                    if(error){
+                        reject(error)
+                    }else{
+                        resolve(row)
+                    }
+                }
+                )
+        })
+    }
 }
 
 export default alunoDAO

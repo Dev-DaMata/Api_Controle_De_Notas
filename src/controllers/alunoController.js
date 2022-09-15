@@ -70,6 +70,23 @@ const alunoController = (app) =>{
             })
         }
     })
+
+    app.delete('/aluno/id/:id', async(req, res) =>{
+        const aluno = req.params.id
+        try{
+            const deletaAluno = await Validacoes._validaDelete(aluno, alunoModel.deletaAluno)
+            res.status(200).json({
+                "msg": "aluno deletado com sucesso",
+                "aluno": deletaAluno,
+                "error": false
+            })
+        }catch(e){
+                res.status(400).json({
+                    "msg": e.message,
+                    "error": true
+                })
+        }
+    })
 }
 
 export default alunoController

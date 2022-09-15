@@ -11,8 +11,10 @@ const alunoModel = {
         return await alunoDAO.pegaUmAlunoNome(nome,sobrenome)
     },
     insereAluno : async (nome, sobrenome, serie)=>{
-        console.log(nome);
         return await alunoDAO.insereAluno(nome, sobrenome, serie)
+    },
+    deletaAluno : async (id)=>{
+        return await alunoDAO.deletaAluno(id)
     }
 }
 export default alunoModel
