@@ -10,7 +10,8 @@ const DATABASE_SCHEMA = [
         entidade: "Tabela Alunos Criada",
         query: `CREATE TABLE IF NOT EXISTS "ALUNOS" (
             "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-            "nomeCompleto" text,
+            "nome" text,
+            "sobrenome" text,
             "serie" varchar(12)
         )`
     },
@@ -30,11 +31,15 @@ const DATABASE_SCHEMA = [
             "id" INTEGER PRIMARY KEY AUTOINCREMENT,
             "id_aluno" int NOT NULL,
             "id_prova" int NOT NULL,
+            "materia" text NOT NULL,
             "nota" real NOT NULL,
             FOREIGN KEY(id_aluno) REFERENCES ALUNOS(id)
             ON UPDATE CASCADE
             ON DELETE CASCADE,
-            FOREIGN KEY(id_prova) REFERENCES AVALIACOES(id)
+            FOREIGN KEY(id_prova) REFERENCES PROVAS(id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+            FOREIGN KEY(materia) REFERENCES PROVAS(materia)
             ON UPDATE CASCADE
             ON DELETE CASCADE
         )`
@@ -44,10 +49,10 @@ const DATABASE_SCHEMA = [
 const Population = [
     {
         entidade: "Tabela Alunos Populada",
-        query: `INSERT INTO ALUNOS (nomeCompleto, serie)
+        query: `INSERT INTO ALUNOS (nome, sobrenome, serie)
         VALUES
-            ("Guilherme Cordeiro", "1ºC"),
-            ("André Back", "1ºA");`
+            ("Guilherme", "Cordeiro", "1ºC"),
+            ("André", "Back", "1ºA");`
     },
     {
         entidade:"Tabela Provas Populada",
@@ -59,14 +64,14 @@ const Population = [
     },
     {
         entidade:"Tabela Boletim Populada",
-        query: `INSERT INTO BOLETIM (id_aluno, id_prova, nota)
+        query: `INSERT INTO BOLETIM (id_aluno,  id_prova, materia, nota)
         VALUES
-            ("1", "1", "9"),
-            ("2", "1", "4"),
-            ("1", "2", "4"),
-            ("2", "2", "5"),
-            ("1", "3", "8"),
-            ("2", "3", "10");`
+            ("1",  "1", "Matematica", "9"),
+            ("2",  "1", "Matematica", "4"),
+            ("1",  "2", "Quimica", "4"),
+            ("2",  "2", "Quimica", "5"),
+            ("1",  "3", "Fisica", "8"),
+            ("2",  "3", "Fisica", "10");`
     }
 ]
 

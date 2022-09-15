@@ -7,8 +7,12 @@ const alunoModel = {
     pegaUmAlunoId : async (id)=>{
         return await alunoDAO.pegaUmAlunoId(id)
     },
-    pegaUmAlunoNome : async (nome)=>{
-        return await alunoDAO.pegaUmAlunoNome(nome)
+    pegaUmAlunoNome : async (nome, sobrenome)=>{
+        return await alunoDAO.pegaUmAlunoNome(nome,sobrenome)
     },
+    insereAluno : async (nome, sobrenome, serie)=>{
+        console.log(nome);
+        return await alunoDAO.insereAluno(nome, sobrenome, serie)
+    }
 }
 export default alunoModel

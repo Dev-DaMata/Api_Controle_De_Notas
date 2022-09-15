@@ -34,6 +34,42 @@ const alunoController = (app) =>{
             })
         }
     })
+
+    app.get('/aluno/nome/:nome/:sobrenome', async (req, res)=>{
+        const nome = req.params.nome
+        const sobrenome = req.params.sobrenome
+        try{
+            const aluno = await Validacoes._validaGetNome(nome, sobrenome, alunoModel.pegaUmAlunoNome)
+            res.status(201).json({
+                "aluno": aluno,
+                "msg": `O aluno ${aluno.nome} esta matriculado `,
+                "erro": false
+            })
+        }catch(error){
+            res.status(404).json({
+                "msg": error.message,
+                "error": true
+            })
+        }
+    })
+
+    app.post('/aluno', async(req, res) => {
+        const aluno = req.body
+        try {
+            const validaBody = await Validacoes._validaReqBody(aluno)
+            const insereAluno = await Validacoes._validaPost(validaBody, alunoModel.insereAluno(aluno.nome, aluno.sobrenome, aluno.serie))
+            res.status(201).json({
+                "msg": "Aluno inserido com sucesso",
+                "nome": insereAluno,
+                "error": false
+            })
+        }catch(e){
+            res.status(404).json({
+                "msg": e.message,
+                "error": true
+            })
+        }
+    })
 }
 
 export default alunoController

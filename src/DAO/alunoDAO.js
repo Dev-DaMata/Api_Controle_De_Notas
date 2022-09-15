@@ -32,13 +32,13 @@ const alunoDAO ={
         })
     },
 
-    pegaUmAlunoNome: (nomeCompleto)=>{
+    pegaUmAlunoNome: (nome, sobrenome)=>{
         const PEGA_UM_ALUNO = `
         SELECT * FROM ALUNOS
-        WHERE nomeCompleto = ?
+        WHERE (nome = ? AND sobrenome = ?)
         `
         return new Promise((resolve, reject) =>{
-            db.get(PEGA_UM_ALUNO, nomeCompleto,(error, row)=>{
+            db.get(PEGA_UM_ALUNO, nome,sobrenome,(error, row)=>{
                 if(error){
                     reject(error)
                 }else{
@@ -48,7 +48,23 @@ const alunoDAO ={
         })
     },
 
-
+    insereAluno: (nome, sobrenome, serie)=>{
+        const INSERE_ALUNOS = `
+        INSERT INTO ALUNOS (nome, sobrenome, serie)
+        VALUES (?,?,?)
+        `
+        return new Promise((resolve, reject)=>{
+        db.run(INSERE_ALUNOS,
+        nome,sobrenome,serie,
+            (error)=>{
+                if(error)
+                    reject(error)
+                else
+                    resolve(nome, sobrenome, serie)
+            }
+            )
+        })
+    },
 }
 
 export default alunoDAO
