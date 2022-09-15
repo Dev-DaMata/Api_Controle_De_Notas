@@ -2,7 +2,7 @@ import alunoDAO from "../DAO/alunoDAO.js";
 
 const Validacoes = {
 
-    _validaGet : async (id, callback)=>{
+    _validaGetId : async (id, callback)=>{
         const aluno = await callback(id)
         if(aluno === undefined){
             throw new Error (`Aviso: ${id} não encontrado!`)
@@ -17,6 +17,7 @@ const Validacoes = {
         }else{
             return aluno
         }
-    }
+    },
+
 }
 export default Validacoes
