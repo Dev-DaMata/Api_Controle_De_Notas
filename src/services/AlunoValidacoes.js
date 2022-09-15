@@ -1,4 +1,4 @@
-import alunoDAO from "../DAO/alunoDAO";
+import alunoDAO from "../DAO/alunoDAO.js";
 
 const Validacoes = {
 
