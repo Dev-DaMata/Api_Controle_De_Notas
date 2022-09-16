@@ -1,5 +1,5 @@
 <h1> ⚠️ Status: :construction: </h1>
-##
+
 <h1 align="center">Escola Boletim API</h1>
 
 ## Tecnologias utilizadas:
@@ -66,4 +66,95 @@ Se for preciso reinicializar o banco de dados, lembre-se de excluir o arquivo `d
 
 ```
 npm run db
+```
+
+# Rotas 
+
+### Alunos
+
+- **GET /alunos**
+
+Confira os alunos registrados no banco de dados
+
+Esquema da requisição:
+
+> http://localhost:3000/alunos 
+
+Esquema da resposta:
+
+```json
+    {
+        "Alunos": [
+            {
+                "id": 1,
+                "nome": "Guilherme",
+                "sobrenome": "Cordeiro",
+                "serie": "1ºC"
+            },
+            {
+                "id": 2,
+                "nome": "André",
+                "sobrenome": "Back",
+                "serie": "1ºA"
+            },
+            {
+                "id": 3,
+                "nome": "Hudson",
+                "sobrenome": "Monitor",
+                "serie": "3ºa"
+            }
+        ],
+        "erro": false
+    }
+```
+---
+- **GET /alunos/id**
+
+Busca um aluno no banco de dados da escola a partir do id do mesmo
+
+Esquema da requisição:
+
+> http://localhost:3000/aluno/id/1
+
+Esquema da resposta:
+
+```json
+
+    {
+        "aluno": {
+            "id": 1,
+            "nome": "Guilherme",
+            "sobrenome": "Cordeiro",
+            "serie": "1ºC"
+        },
+        "msg": "O Aluno undefined esta matriculado na escola",
+        "erro": false
+    }
+
+```
+
+---
+- **GET /alunos/nome/:nome/:sobrenome**
+
+Busca um aluno no banco de dados da escola a partir do nome e sobrenome
+
+Esquema da requisição:
+
+> http://localhost:3000/aluno/nome/Guilherme/Cordeiro
+
+Esquema da resposta:
+
+```json
+
+    {
+        "aluno": {
+            "id": 1,
+            "nome": "Guilherme",
+           "sobrenome": "Cordeiro",
+            "serie": "1ºC"
+        },
+        "msg": "O aluno Guilherme esta matriculado ",
+        "erro": false
+    }
+
 ```
