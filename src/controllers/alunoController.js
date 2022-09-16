@@ -36,8 +36,7 @@ const alunoController = (app) =>{
     })
 
     app.get('/aluno/nome/:nome/:sobrenome', async (req, res)=>{
-        const nome = req.params.nome
-        const sobrenome = req.params.sobrenome
+        let {nome, sobrenome} = req.params
         try{
             const aluno = await Validacoes._validaGetNome(nome, sobrenome, alunoModel.pegaUmAlunoNome)
             res.status(201).json({

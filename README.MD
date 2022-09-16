@@ -161,9 +161,9 @@ Esquema da resposta:
 ---
 - **POST /alunos**
 
-Rota responsavel por adicionar alunos no banco de dados 
+Verbo responsavel por adicionar alunos no banco de dados 
 
-Esquema da requisição
+Esquema da requisição:
 
 > http://localhost:3000/aluno
 
@@ -189,3 +189,29 @@ Esquema da resposta:
 	"error": false
 }
 ```
+---
+- **Delete /alunos**
+
+Verbo responsavel por excluir o aluno do banco de dados 
+
+Esquema da requisição:
+
+> http://localhost:3000/aluno/id/4
+
+Esquema da resposta:
+
+```json
+    {
+	"msg": "aluno deletado com sucesso",
+	"aluno": {
+		"id": 4,
+		"nome": "Hudson",
+		"sobrenome": "Monitor",
+		"serie": "3ºa"
+	},
+	"error": false
+}
+```
+---
+
+
