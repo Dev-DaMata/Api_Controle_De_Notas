@@ -1,4 +1,4 @@
-:construction: 
+<h1> ⚠️ Status: :construction: </h1>
 ##
 <h1 align="center">Escola Boletim API</h1>
 
