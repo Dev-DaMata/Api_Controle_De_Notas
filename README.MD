@@ -158,3 +158,34 @@ Esquema da resposta:
     }
 
 ```
+---
+- **POST /alunos**
+
+Rota responsavel por adicionar alunos no banco de dados 
+
+Esquema da requisição
+
+> http://localhost:3000/aluno
+
+No json:
+```json
+    {
+        "nome": "Hudson",
+        "sobrenome": "Monitor",
+        "serie": "3ºa"
+    }
+```
+
+Esquema da resposta: 
+
+```json
+{
+	"msg": "Aluno inserido com sucesso",
+	"nome": {
+		"nome": "Hudson",
+		"sobrenome": "Monitor",
+		"serie": "3ºa"
+	},
+	"error": false
+}
+```
