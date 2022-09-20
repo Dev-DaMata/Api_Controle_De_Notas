@@ -15,6 +15,10 @@ const alunoModel = {
     },
     deletaAluno : async (id)=>{
         return await alunoDAO.deletaAluno(id)
+    },
+    atualizaAluno : async (id, novoAluno)=>{
+        return await alunoDAO.atualizaAluno(id, novoAluno)
     }
+    
 }
 export default alunoModel

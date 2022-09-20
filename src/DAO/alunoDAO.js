@@ -82,6 +82,26 @@ const alunoDAO ={
                 }
                 )
         })
+    },
+    
+    atualizaAluno: (id, novoAluno)=>{
+        const ATUALIZA_ALUNO = `
+        UPDATE ALUNOS 
+        SET nome = ?, sobrenome = ?, serie =?
+        WHERE id = ?
+        `
+        return new Promise((resolve, reject)=>{
+            db.run(ATUALIZA_ALUNO,
+                novoAluno.nome, novoAluno.sobrenome, novoAluno.serie, id,
+                (error)=>{
+                    if(error){
+                        reject(error)
+                    }else{
+                        resolve(novoAluno)
+                    }
+                }
+                )
+        })
     }
 }
 

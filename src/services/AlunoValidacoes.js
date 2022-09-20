@@ -34,6 +34,15 @@ const Validacoes = {
             return aluno
         }
     },
+
+    _validaAtualiza : async (id, callback, novoBody)=>{
+        const aluno = await callback(id, novoBody)
+        if(aluno === undefined){
+            throw new Error("Não conseguimos atualizar as informações do aluno")
+        }else{
+            return aluno
+        }
+    },
     _validaReqBody : async (body)=>{
         if(body.nome && body.sobrenome && body.serie){
             return body

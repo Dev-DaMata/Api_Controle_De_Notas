@@ -86,6 +86,26 @@ const alunoController = (app) =>{
                 })
         }
     })
+
+    app.put('/aluno/id/:id', async (req, res)=>{
+        const aluno = req.params.id
+        const body = req.body
+        try{
+            const novoBody = await Validacoes._validaReqBody(body)
+            const validaAluno = await Validacoes._validaGetId(aluno, alunoModel.pegaUmAlunoId)
+            const atualizaAluno = await Validacoes._validaAtualiza(validaAluno.id, alunoModel.atualizaAluno, novoBody)
+            res.status(200).json({
+                "msg": "Aluno atualizado com sucasso",
+                "nome": atualizaAluno,
+                "erro": false
+            })
+        }catch(error){
+            res.status(404).json({
+                "msg": error.message,
+                "erro": true
+            })
+        }
+    })
 }
 
 export default alunoController
