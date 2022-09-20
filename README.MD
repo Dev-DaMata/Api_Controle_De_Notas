@@ -213,5 +213,35 @@ Esquema da resposta:
 }
 ```
 ---
+**PUT /alunos**
+
+Verbo responsavel pela atualização do aluno 
+
+Esquema da requisição:
+
+> http://localhost:3000/aluno/id/3
+
+No Json:
+
+```json
+    {
+	"nome": "pedro",
+	"sobrenome": "paulo",
+	"serie": "3ºa"
+}
+```
+Esquema da resposta:
+
+```json
+    {
+	"msg": "Aluno atualizado com sucasso",
+	"nome": {
+		"nome": "pedro",
+		"sobrenome": "paulo",
+		"serie": "3ºa"
+	},
+	"erro": false
+}
+```
 
 
