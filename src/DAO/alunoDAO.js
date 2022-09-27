@@ -48,21 +48,17 @@ const alunoDAO ={
         })
     },
 
-    insereAluno: (nome, sobrenome, serie)=>{
-        const INSERE_ALUNOS = `
-        INSERT INTO ALUNOS (nome, sobrenome, serie)
-        VALUES (?,?,?)
-        `
+    insereAluno: (aluno)=>{
         return new Promise((resolve, reject)=>{
-        db.run(INSERE_ALUNOS,
-        nome,sobrenome,serie,
-            (error)=>{
-                if(error)
-                    reject(error)
-                else
-                    resolve(nome, sobrenome, serie)
-            }
-            )
+            db.run(`INSERT INTO ALUNOS (NOME, SOBRENOME, SERIE)
+            VALUES (?, ?, ?)`, aluno.nome, aluno.sobrenome, aluno.serie,
+            (erro)=>{
+                if(erro){
+                    reject(erro)
+                }else{
+                    resolve("Aluno inserido com sucesso")
+                }
+            })
         })
     },
 
