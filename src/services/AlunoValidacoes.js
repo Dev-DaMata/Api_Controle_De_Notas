@@ -19,9 +19,10 @@ const Validacoes = {
         }
     },
     _validaPost : async (aluno, callback)=>{
-        if(aluno.nome.length < 1 || aluno.sobrenome.length < 1 || aluno.serie.length < 1){
+        if(aluno.nome.length <= 1 || aluno.sobrenome.length <= 1 || aluno.serie.length <= 1){
             throw new Error ("Aviso: preencha todos os campos")
         }else{
+            await callback(aluno)
             return aluno
         }
     },
