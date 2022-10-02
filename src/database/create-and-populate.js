@@ -21,7 +21,7 @@ const DATABASE_SCHEMA = [
             "id" INTEGER PRIMARY KEY AUTOINCREMENT,
             "materia" numeric,
             "notaMaxima" numeric,
-            "data" text
+            "numProva" text
         )`,
     },
 
@@ -56,11 +56,11 @@ const Population = [
     },
     {
         entidade:"Tabela Provas Populada",
-        query: `INSERT INTO PROVAS (materia, notaMaxima, data)
+        query: `INSERT INTO PROVAS (materia, notaMaxima, numProva )
         VALUES
-            ("Matematica", "10", "2022/09/20"),
-            ("Quimica", "5", "2022/05/15"),
-            ("Fisica", "10", "2022/09/25");`
+            ("Matematica", "10", "P1"),
+            ("Quimica", "5", "P2"),
+            ("Fisica", "10", "P1");`
     },
     {
         entidade:"Tabela Boletim Populada",

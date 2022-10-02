@@ -7,13 +7,13 @@ const alunoController = (app) => {
         try {
             const todosAlunos = await alunoModel.pegaAluno();
             res.status(todosAlunos.status).json({
-                Alunos: todosAlunos.dados,
-                erro: false,
+                "Alunos": todosAlunos.dados,
+                "erro": false,
             });
         } catch (error) {
             res.status(404).json({
-                msg: error.message,
-                erro: true,
+                "msg": error.message,
+                "erro": true,
             });
         }
     });
