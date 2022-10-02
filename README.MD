@@ -243,5 +243,44 @@ Esquema da resposta:
 	"erro": false
 }
 ```
+---
+
+### Provas
+- **GET /provas**
+
+Confira as provas registradas no banco de dados
+
+Esquema da requisição:
+
+> http://localhost:3000/provas 
+
+Esquema da resposta:
+
+```json
+    {
+	"Provas": [
+		{
+			"id": 1,
+			"materia": "Matematica",
+			"notaMaxima": 10,
+			"numProva": "P1"
+		},
+		{
+			"id": 2,
+			"materia": "Quimica",
+			"notaMaxima": 5,
+			"numProva": "P2"
+		},
+		{
+			"id": 3,
+			"materia": "Fisica",
+			"notaMaxima": 10,
+			"numProva": "P1"
+		}
+	],
+	"erro": false
+}
+```
+
 
 
